@@ -5,12 +5,9 @@ errores=[]
 erColumnas=[]
 erFilas=[]
 palabrasReservadas=["CrearBD",
-                    "=",
-                    "nueva",
-                    "(",
-                    ")",
-                    ";",
-                    "EliminarBD"
+                    "EliminarBD",
+                    "CrearColeccion",
+                    "EliminarColeccion"
                     ]
 
 # Función para cargar el archivo .txt
@@ -26,24 +23,48 @@ def analizador(contenido):
         palabras = lineaSinSangria.split()     
         memoria.extend(palabras)
         
+    
+    i=0    
     for palabra in memoria:
-        if palabra[0:7]==palabrasReservadas[0]:
+        if palabra==palabrasReservadas[0]:
             tokens.append(palabrasReservadas[0])
+            tokens.append(memoria[i+1])
+            tokens.append(memoria[i+2])
+            tokens.append(memoria[i+3])
+            tokens.append(palabrasReservadas[0])
+            tokens.append('(')
+            tokens.append(")")
+            tokens.append(';')
         if palabra==palabrasReservadas[1]:
             tokens.append(palabrasReservadas[1])
+            tokens.append(memoria[i+1])
+            tokens.append(memoria[i+2])
+            tokens.append(memoria[i+3])
+            tokens.append(palabrasReservadas[1])
+            tokens.append('(')
+            tokens.append(")")
+            tokens.append(';')
         if palabra==palabrasReservadas[2]:
             tokens.append(palabrasReservadas[2])
-        if len(palabra) >= 3 and palabra[-3] == palabrasReservadas[3]:
+            tokens.append(memoria[i+1])
+            tokens.append(memoria[i+2])
+            tokens.append(memoria[i+3])
+            tokens.append(palabrasReservadas[2])
+            tokens.append('(')
+            tokens.append('"')
+            tokens.append(memoria[i+4][16:-3])
+            tokens.append('"')
+            tokens.append(')')
+        if palabra==palabrasReservadas[3]:
             tokens.append(palabrasReservadas[3])
-        if len(palabra) >= 2 and palabra[-2] == palabrasReservadas[4]:
-            tokens.append(palabrasReservadas[4])
-        if len(palabra) >= 1 and palabra[-1] == palabrasReservadas[5]:
-            tokens.append(palabrasReservadas[5])
-        if palabra[0:10]==palabrasReservadas[6]:
-            tokens.append(palabrasReservadas[6])
+    
+            
         
         
-
+        i+=1
+        
+    #for mem in memoria:
+    #    print(mem)
     for token in tokens:
         print(token)   
         
