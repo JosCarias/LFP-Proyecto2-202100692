@@ -3,15 +3,15 @@ EliminarBD elimina = nueva EliminarBD();
 CrearColeccion colec = nueva CrearColeccion(“NombreColeccion”);
 EliminarColeccion eliminacolec = nueva
 EliminarColeccion (“NombreColeccion”);
-InsertarUnico insertadoc = nueva InsertarUnico (“NombreColeccion”,“
+InsertarUnico insertadoc = nueva InsertarUnico(“NombreColeccion”,“
 {
-"nombre" : "Obra Literaria",
-"autor":"Jorge Luis"
+"nombre": "ObraLiteraria",
+"autor": "JorgeLuis"
 }
 ”);
 ActualizarUnico actualizadoc = nueva ActualizarUnico(“NombreColeccion”, “
 {
-"nombre": "Obra Literaria"
+"nombre": "ObraLiteraria"
 },
 {
 $set: {"autor": "Mario Vargas"}

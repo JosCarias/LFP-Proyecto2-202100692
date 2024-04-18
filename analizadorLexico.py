@@ -7,7 +7,9 @@ erFilas=[]
 palabrasReservadas=["CrearBD",
                     "EliminarBD",
                     "CrearColeccion",
-                    "EliminarColeccion"
+                    "EliminarColeccion",
+                    "InsertarUnico",
+                    "ActualizarUnico"
                     ]
 
 # Función para cargar el archivo .txt
@@ -57,10 +59,71 @@ def analizador(contenido):
             tokens.append(')')
         if palabra==palabrasReservadas[3]:
             tokens.append(palabrasReservadas[3])
-    
-            
-        
-        
+            if memoria[i+1][-1]==";":
+                tokens.append('(')
+                tokens.append('"')
+                tokens.append(memoria[i+1][2:-3])
+                tokens.append('"')
+                tokens.append(')')
+                tokens.append(';')
+            else:
+                tokens.append(memoria[i+1])
+                tokens.append(memoria[i+2])
+                tokens.append(memoria[i+3])
+        if palabra==palabrasReservadas[4]:
+            tokens.append(palabrasReservadas[4])
+            tokens.append(memoria[i+1])
+            tokens.append(memoria[i+2])
+            tokens.append(memoria[i+3])
+            tokens.append(palabrasReservadas[4])
+            tokens.append('(')
+            tokens.append('"')
+            tokens.append(memoria[i+4][15:-3])
+            tokens.append('"')
+            tokens.append(',')
+            tokens.append('"')
+            tokens.append(memoria[i+5])
+            tokens.append('"')
+            tokens.append(memoria[i+6][1:-2])
+            tokens.append('"')
+            tokens.append(':')
+            tokens.append('"')
+            tokens.append(memoria[i+7][1:-2])    
+            tokens.append('"')
+            tokens.append(',')
+            tokens.append('"')
+            tokens.append(memoria[i+8][1:-2])
+            tokens.append('"')
+            tokens.append(',')
+            tokens.append('"')
+            tokens.append(memoria[i+9][1:-2])
+            tokens.append('"')
+            tokens.append(memoria[i+10])
+            tokens.append('"')
+            tokens.append(')')
+            tokens.append(';')
+        if palabra==palabrasReservadas[5]:
+            tokens.append(palabrasReservadas[5])
+            tokens.append(memoria[i+1])
+            tokens.append(memoria[i+2])
+            tokens.append(memoria[i+3])
+            tokens.append(palabrasReservadas[5])
+            tokens.append('(')
+            tokens.append('"')
+            tokens.append(memoria[i+4][17:-2])
+            tokens.append('"')
+            tokens.append(',')
+            tokens.append('"')
+            tokens.append(memoria[i+6])
+            tokens.append('"')
+            tokens.append(memoria[i+7][1:-2])
+            tokens.append(':')
+
+
+
+
+
+
         i+=1
         
     #for mem in memoria:
