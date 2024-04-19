@@ -12,7 +12,8 @@ palabrasReservadas=["CrearBD",
                     "ActualizarUnico",
                     "EliminarUnico",
                     "BuscarTodo",
-                    "BuscarUnico"
+                    "BuscarUnico",
+                    "nuevo"
                     ]
 
 # Función para cargar el archivo .txt
@@ -27,10 +28,11 @@ def analizador(contenido):
         lineaSinSangria = linea.strip()
         palabras = lineaSinSangria.split()     
         memoria.extend(palabras)
-        
-    
-    i=0    
+           
+    i=0   
+    linea=0
     for palabra in memoria:
+        columna=0 
         if palabra==palabrasReservadas[0]:
             tokens.append(palabrasReservadas[0])
             tokens.append(memoria[i+1])
@@ -40,6 +42,9 @@ def analizador(contenido):
             tokens.append('(')
             tokens.append(")")
             tokens.append(';')
+            for columna in range(8):
+                columnas.append(columna)
+                filas.append(filas+columnas)         
         if palabra==palabrasReservadas[1]:
             tokens.append(palabrasReservadas[1])
             tokens.append(memoria[i+1])
@@ -49,6 +54,9 @@ def analizador(contenido):
             tokens.append('(')
             tokens.append(")")
             tokens.append(';')
+            for columna in range(8):
+                columnas.append(columna)
+                filas.append(filas+columnas)
         if palabra==palabrasReservadas[2]:
             tokens.append(palabrasReservadas[2])
             tokens.append(memoria[i+1])
@@ -60,6 +68,9 @@ def analizador(contenido):
             tokens.append(memoria[i+4][16:-3])
             tokens.append('"')
             tokens.append(')')
+            for columna in range(10):
+                columnas.append(columna)
+                filas.append(filas+columnas)
         if palabra==palabrasReservadas[3]:
             tokens.append(palabrasReservadas[3])
             if memoria[i+1][-1]==";":
@@ -69,10 +80,16 @@ def analizador(contenido):
                 tokens.append('"')
                 tokens.append(')')
                 tokens.append(';')
+                for columna in range(7):
+                    columnas.append(columna)
+                    filas.append(filas+columnas)
             else:
                 tokens.append(memoria[i+1])
                 tokens.append(memoria[i+2])
                 tokens.append(memoria[i+3])
+                for columna in range(4):
+                    columnas.append(columna)
+                    filas.append(filas+columnas)
         if palabra==palabrasReservadas[4]:
             tokens.append(palabrasReservadas[4])
             tokens.append(memoria[i+1])
@@ -105,6 +122,9 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(')')
             tokens.append(';')
+            for columna in range(31):
+                    columnas.append(columna)
+                    filas.append(filas+columnas)
         if palabra==palabrasReservadas[5]:
             tokens.append(palabrasReservadas[5])
             tokens.append(memoria[i+1])
@@ -141,6 +161,9 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(')')
             tokens.append(';')
+            for columna in range(35):
+                    columnas.append(columna)
+                    filas.append(filas+columnas)
         if palabra==palabrasReservadas[6]:
             tokens.append(palabrasReservadas[6])
             tokens.append(memoria[i+1])
@@ -165,6 +188,9 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(')')
             tokens.append(';')
+            for columna in range(23):
+                    columnas.append(columna)
+                    filas.append(filas+columnas)
         if palabra==palabrasReservadas[7]:
             tokens.append(palabrasReservadas[7])
             tokens.append(memoria[i+1])
@@ -177,6 +203,9 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(')')
             tokens.append(';')
+            for columna in range(11):
+                    columnas.append(columna)
+                    filas.append(filas+columnas)
         if palabra==palabrasReservadas[8]:
             tokens.append(palabrasReservadas[8])
             tokens.append(memoria[i+1])
@@ -189,11 +218,18 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(')')
             tokens.append(';')
+            for columna in range(11):
+                    columnas.append(columna) 
+                    filas.append(filas+columnas)      
         i+=1
+    
         
-    for token in tokens:
-        print(token)   
+  
         
 #contenido=cargar_archivo_txt("entrada copy.txt") 
-contenido=cargar_archivo_txt("entrada.txt")
-analizador(contenido)
+#contenido=cargar_archivo_txt("entrada.txt")
+#analizador(contenido)
+#
+#print(len(tokens))
+#print(len(columnas))
+#print(len(filas))
