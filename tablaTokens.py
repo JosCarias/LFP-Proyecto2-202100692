@@ -61,7 +61,7 @@ def reporte():
     webbrowser.open("file://" + ruta_absoluta)
     
     
-contenido=cargar_archivo_txt("entrada.txt")
-analizador(contenido)
-reporte()
+#contenido=cargar_archivo_txt("entrada.txt")
+#analizador(contenido)
+#reporte()
     

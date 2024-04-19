@@ -2,7 +2,11 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
-from analizadorLexico import cargar_archivo_txt
+from analizadorLexico import analizador,cargar_archivo_txt,numeroDeTokens,listaTokens
+from tablaTokens import reporte
+
+
+
 
 ruta=""
 
@@ -82,7 +86,13 @@ def interfaz():
     # Función para manejar la selección del combobox
     def seleccionar_opcion(event):
         seleccion = comboboxAnalisis.get()
-        print("Opción seleccionada:", seleccion)
+        if seleccion == "Generar Sentencias":
+            borrarPantalla()
+            contenido="Sentencias MD"
+            textboxPantalla.insert(tk.END, contenido)
+            contenido=cargar_archivo_txt(ruta)
+            analizador(contenido)
+        
     
     # Asignar una función para manejar la selección de opciones
     comboboxAnalisis.bind("<<ComboboxSelected>>", seleccionar_opcion)
@@ -99,7 +109,19 @@ def interfaz():
     # Función para manejar la selección del combobox
     def seleccionar_opcion(event):
         seleccion = comboboxTokens.get()
-        print("Opción seleccionada:", seleccion)
+        
+        if seleccion == "Nuevo Correlativo":
+            contenido="Numero de tokens\n"
+            contenido+=str(numeroDeTokens())
+            borrarPantalla()
+            textboxPantalla.insert(tk.END, contenido)
+        if seleccion == "Token":
+            contenido="Tabla de tokens"
+            contenido+=listaTokens()
+            borrarPantalla()
+            textboxPantalla.insert(tk.END, contenido)
+            reporte()
+        
     
     # Asignar una función para manejar la selección de opciones
     comboboxTokens.bind("<<ComboboxSelected>>", seleccionar_opcion)
