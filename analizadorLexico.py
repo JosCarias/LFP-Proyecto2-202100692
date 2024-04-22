@@ -13,7 +13,7 @@ palabrasReservadas=["CrearBD",
                     "EliminarUnico",
                     "BuscarTodo",
                     "BuscarUnico",
-                    "nuevo"
+                    "nueva"
                     ]
 
 # Función para cargar el archivo .txt
