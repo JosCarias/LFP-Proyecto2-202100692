@@ -87,11 +87,11 @@ def interfaz():
         seleccion = comboboxAnalisis.get()
         if seleccion == "Generar Sentencias":
             borrarPantalla()
+            contenido=cargar_archivo_txt(ruta)
+            analizador(contenido)
             contenido="Sentencias MD"
             contenido+=sentencias()
             textboxPantalla.insert(tk.END, contenido)
-            contenido=cargar_archivo_txt(ruta)
-            analizador(contenido)
         
     
     # Asignar una función para manejar la selección de opciones
