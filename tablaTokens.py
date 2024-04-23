@@ -1,6 +1,6 @@
 import webbrowser
 import os
-from analizadorLexico import tokens,palabrasReservadas,filas,columnas,cargar_archivo_txt,analizador
+from analizadorLexico import tokens,palabrasReservadas,columnas
 
 def reporte():
     # Definir el contenido de la tabla en formato HTML
@@ -33,14 +33,21 @@ def reporte():
             tabla_html += "Corchete de apertura"
         elif tokens[i] == "]":
             tabla_html += "Corchete de cierre" 
-        elif tokens[i] not in palabrasReservadas:
-            tabla_html += "Cadena"
+        elif tokens[i] == "(":
+            tabla_html += "Parentesis de apertura"
+        elif tokens[i] == ")":
+            tabla_html += "Parentesis de cierre"
         elif tokens[i] == '"':
             tabla_html += "Comilla" 
         elif tokens[i] == ';':
-            tabla_html += "Punto y coma"   
+            tabla_html += "Punto y coma" 
+        elif tokens[i] == '=':
+            tabla_html += "Signo igual" 
+        elif tokens[i] not in palabrasReservadas:
+            tabla_html += "Cadena"    
         else:
             tabla_html += "Palabra reservada"
+         
           
         tabla_html += '''</td>\n'''
         tabla_html +="        <td>"+ tokens[i]+"</td>\n"

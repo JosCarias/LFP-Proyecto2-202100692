@@ -5,9 +5,6 @@ from tkinter import ttk
 from analizadorLexico import analizador,cargar_archivo_txt,numeroDeTokens,listaTokens
 from tablaTokens import reporte
 
-
-
-
 ruta=""
 
 def interfaz():
@@ -102,7 +99,7 @@ def interfaz():
     etiqueta.grid(column=4, row=0, padx=5, pady=5)
     
     # Crear un Combobox
-    opcionesTokens = ["Nuevo Correlativo", "Token", "Numero De Token", "Lexema"]
+    opcionesTokens = ["Nuevo Correlativo", "Token","Tabla"]
     comboboxTokens = ttk.Combobox(frameArriba,values=opcionesTokens)
     comboboxTokens.grid(column=5, row=0, pady=5, padx=5)
     
@@ -116,10 +113,11 @@ def interfaz():
             borrarPantalla()
             textboxPantalla.insert(tk.END, contenido)
         if seleccion == "Token":
-            contenido="Tabla de tokens"
+            contenido="Tabla de tokens\n"
             contenido+=listaTokens()
             borrarPantalla()
-            textboxPantalla.insert(tk.END, contenido)
+            textboxPantalla.insert(tk.END, contenido)     
+        if seleccion == "Tabla":
             reporte()
         
     
@@ -131,7 +129,7 @@ def interfaz():
     etiqueta.grid(column=6, row=0, padx=5, pady=5)
     
     # Crear un Combobox
-    opcionesErrores = ["Tipo De Error", "Linea Error", "Columna Error", "Token","Descripcion"]
+    opcionesErrores = ["Nuevo Correlativo", "Token", "Columna Error", "Token","Descripcion"]
     comboboxErrores = ttk.Combobox(frameArriba,values=opcionesErrores)
     comboboxErrores.grid(column=7, row=0, pady=5, padx=5)
     
