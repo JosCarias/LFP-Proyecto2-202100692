@@ -13,8 +13,7 @@ palabrasReservadas=["CrearBD",
                     "EliminarUnico",
                     "BuscarTodo",
                     "BuscarUnico",
-                    "nuevo",
-                    "$set"
+                    "nueva"
                     ]
 
 # Función para cargar el archivo .txt
@@ -117,7 +116,7 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(',')
             tokens.append('"')
-            tokens.append(memoria[i+9][1:-1])
+            tokens.append(memoria[i+9][1:-2])
             tokens.append('"')
             tokens.append(memoria[i+10])
             tokens.append('"')
