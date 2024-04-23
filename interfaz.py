@@ -2,8 +2,10 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
-from analizadorLexico import analizador,cargar_archivo_txt,numeroDeTokens,listaTokens
+from analizadorLexico import analizador,cargar_archivo_txt,numeroDeTokens,listaTokens,numeroDeErrores,listaErrores
 from tablaTokens import reporte
+from tablaErrores import tablaErrores
+from generarSentencias import sentencias
 
 ruta=""
 
@@ -86,6 +88,7 @@ def interfaz():
         if seleccion == "Generar Sentencias":
             borrarPantalla()
             contenido="Sentencias MD"
+            contenido+=sentencias()
             textboxPantalla.insert(tk.END, contenido)
             contenido=cargar_archivo_txt(ruta)
             analizador(contenido)
@@ -129,14 +132,26 @@ def interfaz():
     etiqueta.grid(column=6, row=0, padx=5, pady=5)
     
     # Crear un Combobox
-    opcionesErrores = ["Nuevo Correlativo", "Token", "Columna Error", "Token","Descripcion"]
+    opcionesErrores = ["Nuevo Correlativo", "Token","Tabla"]
     comboboxErrores = ttk.Combobox(frameArriba,values=opcionesErrores)
     comboboxErrores.grid(column=7, row=0, pady=5, padx=5)
     
     # Función para manejar la selección del combobox
     def seleccionar_opcion(event):
         seleccion = comboboxErrores.get()
-        print("Opción seleccionada:", seleccion)
+        if seleccion == "Nuevo Correlativo":
+            contenido="Numero de errores\n"
+            contenido+=str(numeroDeErrores())
+            borrarPantalla()
+            textboxPantalla.insert(tk.END, contenido)
+        if seleccion == "Token":
+            contenido="Tabla de tokens\n"
+            contenido+=listaErrores()
+            borrarPantalla()
+            textboxPantalla.insert(tk.END, contenido)     
+        if seleccion == "Tabla":
+            tablaErrores()
+        
     
     # Asignar una función para manejar la selección de opciones
     comboboxErrores.bind("<<ComboboxSelected>>", seleccionar_opcion)

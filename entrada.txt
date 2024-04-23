@@ -1,7 +1,7 @@
-CrearBD ejemplo = nueva CrearBD();
+CrearBD ejemplo = nueva CrearBD(); @
 EliminarBD elimina = nueva EliminarBD();
 CrearColeccion colec = nueva CrearColeccion(“NombreColeccion”);
-EliminarColeccion eliminacolec = nueva
+EliminarColeccion eliminacolec = nueva $
 EliminarColeccion (“NombreColeccion”);
 InsertarUnico insertadoc = nueva InsertarUnico(“NombreColeccion”,“
 {

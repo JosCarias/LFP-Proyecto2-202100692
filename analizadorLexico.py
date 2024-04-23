@@ -116,7 +116,7 @@ def analizador(contenido):
             tokens.append('"')
             tokens.append(',')
             tokens.append('"')
-            tokens.append(memoria[i+9][1:-2])
+            tokens.append(memoria[i+9][1:-1])
             tokens.append('"')
             tokens.append(memoria[i+10])
             tokens.append('"')
@@ -220,11 +220,54 @@ def analizador(contenido):
             tokens.append(';')
             for columna in range(11):
                     columnas.append(columna) 
-                    filas.append(filas)      
+                    filas.append(filas)    
+        if palabra=='@':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i)  
+        if palabra=='#':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i) 
+        if palabra=='$':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i)
+        if palabra=='%':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i) 
+        if palabra=='&':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i)
+        if palabra=='|':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i) 
+        if palabra=='+':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i)
+        if palabra=='-':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i)  
+        if palabra=='*':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i) 
+        if palabra=='/':
+            errores.append(palabra)
+            erFilas.append(columna)
+            erColumnas.append(i)
         i+=1
     
 def numeroDeTokens():
     return(len(tokens))
+
+def numeroDeErrores():
+    return(len(errores))
 
 def listaTokens():
     contenido=""
@@ -232,12 +275,23 @@ def listaTokens():
     for token in tokens:
         i+=1
         contenido+="|"+str(i)+"|"+ token+"|\n"
-    return contenido           
+    return contenido  
+
+def listaErrores():
+    contenido=""
+    i=0
+    for error in errores:
+        i+=1
+        contenido+="|"+str(i)+"|"+ error+"|\n"
+    return contenido 
+             
   
         
 #contenido=cargar_archivo_txt("entrada copy.txt") 
 #contenido=cargar_archivo_txt("entrada.txt")
 #analizador(contenido)
+#print(listaTokens())
+#print(listaErrores())
 #
 #print(len(tokens))
 #print(len(columnas))
