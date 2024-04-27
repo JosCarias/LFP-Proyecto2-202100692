@@ -89,7 +89,7 @@ def interfaz():
             borrarPantalla()
             contenido=cargar_archivo_txt(ruta)
             analizador(contenido)
-            contenido="Sentencias MD"
+            contenido="Sentencias MD:\n"
             contenido+=sentencias()
             textboxPantalla.insert(tk.END, contenido)
         

@@ -6,7 +6,7 @@ def sentencias():
     global sentencias
     i=0 
     for i in range(len(tokens)):
-        if tokens[i] =="CrearBD" and tokens[i+3]=="nueva":
+        if tokens[i] =="CrearBD" and len(tokens[i+1])>1 and tokens[i+3]=="nueva" and tokens[i+4]=="CrearBD" and tokens[i+5]=="(" and tokens[i+6]==")" and tokens[i+7]==";":
             nombre=tokens[i+1]
             listSentencias.append("use('"+nombre+"');")
         if tokens[i] =="EliminarBD" and tokens[i+3]=="nueva":

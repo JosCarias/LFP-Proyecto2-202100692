@@ -44,7 +44,8 @@ def analizador(contenido):
             tokens.append(';')
             for columna in range(8):
                 columnas.append(columna)
-                filas.append(filas)         
+                filas.append(filas)  
+                   
         if palabra==palabrasReservadas[1]:
             tokens.append(palabrasReservadas[1])
             tokens.append(memoria[i+1])
