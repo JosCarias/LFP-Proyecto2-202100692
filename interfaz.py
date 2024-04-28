@@ -6,6 +6,7 @@ from analizadorLexico import analizador,cargar_archivo_txt,numeroDeTokens,listaT
 from tablaTokens import reporte
 from tablaErrores import tablaErrores
 from generarSentencias import sentencias
+from erroreSintacticos import erroresSin
 
 ruta=""
 
@@ -132,7 +133,7 @@ def interfaz():
     etiqueta.grid(column=6, row=0, padx=5, pady=5)
     
     # Crear un Combobox
-    opcionesErrores = ["Nuevo Correlativo", "Token","Tabla"]
+    opcionesErrores = ["Nuevo Correlativo", "Token","Tabla","Errores sintacticos"]
     comboboxErrores = ttk.Combobox(frameArriba,values=opcionesErrores)
     comboboxErrores.grid(column=7, row=0, pady=5, padx=5)
     
@@ -151,6 +152,12 @@ def interfaz():
             textboxPantalla.insert(tk.END, contenido)     
         if seleccion == "Tabla":
             tablaErrores()
+        if seleccion == "Errores sintacticos":
+            borrarPantalla()
+            contenido="Errores sintacticos:\n"
+            contenido+=str(erroresSin())
+            textboxPantalla.insert(tk.END, contenido)
+            
         
     
     # Asignar una función para manejar la selección de opciones

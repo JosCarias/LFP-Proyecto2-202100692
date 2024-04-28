@@ -4,6 +4,7 @@ filas=[]
 errores=[]
 erColumnas=[]
 erFilas=[]
+
 palabrasReservadas=["CrearBD",
                     "EliminarBD",
                     "CrearColeccion",
@@ -33,6 +34,7 @@ def analizador(contenido):
     linea=0
     for palabra in memoria:
         columna=0 
+    
         if palabra==palabrasReservadas[0]:
             tokens.append(palabrasReservadas[0])
             tokens.append(memoria[i+1])
@@ -42,10 +44,16 @@ def analizador(contenido):
             tokens.append('(')
             tokens.append(")")
             tokens.append(';')
+            if memoria[i+4][-1]!=";" and  memoria[i+4][-1]==")" and memoria[i+4][-2:-1]=="(":
+                errores.append("falta ; en "+palabrasReservadas[0])
+            if memoria[i+4][-2:-1]!=")" and memoria[i+4][-1]==";" and memoria[i+4][-2:-1]=="(":
+                errores.append("falta ) en "+palabrasReservadas[0])
+            if memoria[i+4][-3:-2]!="(" and memoria[i+4][-1]==";" and memoria[i+4][-2:-1]==")":
+                errores.append("falta ( en "+palabrasReservadas[0])
             for columna in range(8):
                 columnas.append(columna)
-                filas.append(filas)  
-                   
+                filas.append(filas)            
+                              
         if palabra==palabrasReservadas[1]:
             tokens.append(palabrasReservadas[1])
             tokens.append(memoria[i+1])
@@ -55,6 +63,12 @@ def analizador(contenido):
             tokens.append('(')
             tokens.append(")")
             tokens.append(';')
+            if memoria[i+4][-1]!=";" and  memoria[i+4][-1]==")" and memoria[i+4][-2:-1]=="(":
+                errores.append("falta ; en "+palabrasReservadas[1])
+            if memoria[i+4][-2:-1]!=")" and memoria[i+4][-1]==";" and memoria[i+4][-2:-1]=="(":
+                errores.append("falta ) en "+palabrasReservadas[1])
+            if memoria[i+4][-3:-2]!="(" and memoria[i+4][-1]==";" and memoria[i+4][-2:-1]==")":
+                errores.append("falta ( en "+palabrasReservadas[1])
             for columna in range(8):
                 columnas.append(columna)
                 filas.append(filas)

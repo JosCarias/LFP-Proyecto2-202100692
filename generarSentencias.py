@@ -1,17 +1,16 @@
-from analizadorLexico import tokens,cargar_archivo_txt,analizador
+from analizadorLexico import tokens
 
 listSentencias=[]
-errores=[]
+
 def sentencias():
-    global sentencias
     i=0 
     for i in range(len(tokens)):
-        if tokens[i] =="CrearBD" and len(tokens[i+1])>1 and tokens[i+3]=="nueva" and tokens[i+4]=="CrearBD" and tokens[i+5]=="(" and tokens[i+6]==")" and tokens[i+7]==";":
+        if tokens[i] =="CrearBD" and tokens[i+3]=="nueva":
             nombre=tokens[i+1]
-            listSentencias.append("use('"+nombre+"');")
+            listSentencias.append("use('" + nombre + "');")  
         if tokens[i] =="EliminarBD" and tokens[i+3]=="nueva":
             nombre=tokens[i+3]
-            listSentencias.append("db.dropDatabase();")
+            listSentencias.append("db.dropDatabase();")                                       
         if tokens[i] =="CrearColeccion" and tokens[i+3]=="nueva":
             nombre=tokens[i+1]
             listSentencias.append("db.createCollection('"+tokens[i+1]+"');")

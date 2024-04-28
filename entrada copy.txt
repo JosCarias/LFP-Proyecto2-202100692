@@ -1,1 +1,8 @@
-CrearBD ejemplo = nueva CrearBD();
+CrearBD ejemplo1 = nueva CrearBD()
+CrearBD ejemplo2 = nueva CrearBD(;
+CrearBD ejemplo3 = nueva CrearBD);
+CrearBD ejemplo4 = nueva CrearBD();
+EliminarBD elimina1 = nueva EliminarBD()
+EliminarBD elimina2 = nueva EliminarBD(;
+EliminarBD elimina3 = nueva EliminarBD);
+EliminarBD elimina4 = nueva EliminarBD();
